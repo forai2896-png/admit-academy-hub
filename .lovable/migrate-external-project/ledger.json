@@ -1,0 +1,58 @@
+[
+  {
+    "capability": "code",
+    "source": "github childomm89-dot/admit-academy-hub",
+    "outcome": "migrate",
+    "status": "verified",
+    "next_action": "none"
+  },
+  {
+    "capability": "schema",
+    "source": "none (browser localStorage via src/lib/local-app-state.ts)",
+    "outcome": "not_applicable",
+    "status": "verified",
+    "next_action": "none"
+  },
+  {
+    "capability": "records",
+    "source": "browser localStorage + bundled seed data",
+    "outcome": "migrate_with_code",
+    "status": "verified",
+    "next_action": "none"
+  },
+  {
+    "capability": "auth",
+    "source": "none detected",
+    "outcome": "not_applicable",
+    "status": "verified",
+    "next_action": "none"
+  },
+  {
+    "capability": "storage",
+    "source": "public/sample-documents static files",
+    "outcome": "migrate_with_code",
+    "status": "verified",
+    "next_action": "none"
+  },
+  {
+    "capability": "external_providers",
+    "source": "none detected",
+    "outcome": "not_applicable",
+    "status": "verified",
+    "next_action": "none"
+  },
+  {
+    "capability": "secrets",
+    "source": "optional VITE_ATTENDANCE_LATE_COUNTS_AS_PRESENT, VITE_TOPIC_NOTES_MAX_FILE_SIZE_MB (non-secret, have defaults)",
+    "outcome": "not_applicable",
+    "status": "verified",
+    "next_action": "none"
+  },
+  {
+    "capability": "verification",
+    "source": "build, tests, route render",
+    "outcome": "verify",
+    "status": "verified",
+    "next_action": "none"
+  }
+]
