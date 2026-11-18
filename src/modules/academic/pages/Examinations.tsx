@@ -208,7 +208,7 @@ export const Examinations: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <header className="rounded-xl border border-lime-100 bg-gradient-to-r from-lime-50 to-white p-4 sm:p-5">
         <div className="flex items-start gap-3">
           <div className="rounded-lg bg-lime-900 p-2 text-white">

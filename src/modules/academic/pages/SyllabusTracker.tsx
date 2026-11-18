@@ -331,7 +331,7 @@ export const SyllabusTracker: React.FC = () => {
   // If NO approved batches exist in the system yet:
   if (approvedBatches.length === 0) {
     return (
-      <div className="space-y-2">
+      <div className="space-y-5">
         <div>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
             Syllabus progress is gated by schedule confirmation.

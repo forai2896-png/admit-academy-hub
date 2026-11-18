@@ -12,6 +12,12 @@ import { useTrainer } from '../context/TrainerContext';
 import { EmptyState } from '../components/common/EmptyState';
 import { CustomDropdown } from '../components/common/CustomDropdown';
 
+const formatTimestamp = (value: string): string => {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toLocaleString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
+};
+
 export const Notifications: React.FC = () => {
   const navigate = useNavigate();
   const { notifications, resolveNotification } = useTrainer();
@@ -37,11 +43,11 @@ export const Notifications: React.FC = () => {
   const resolvedCount = notifications.filter((n) => n.isResolved).length;
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-4">
       {/* Tabs & Filter Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-2 rounded-xl max-w-[255px] bg-white border border-slate-200 shadow-2xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 w-full sm:max-w-[280px]">
         {/* Category selector */}
-        <div className="flex items-center gap-2">
+        <div className="flex w-full items-center gap-2">
           <Filter className="w-3.5 h-3.5 text-slate-400" />
           <CustomDropdown
             value={categoryFilter}
@@ -125,7 +131,7 @@ export const Notifications: React.FC = () => {
                     </div>
 
                     <div className="min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-1.5">
                         <span
                           className={`text-[11px] font-semibold uppercase tracking-wider ${
                             item.isResolved
@@ -141,7 +147,7 @@ export const Notifications: React.FC = () => {
                         </span>
                         <span className="text-slate-300">·</span>
                         <span className="text-xs text-slate-400 font-mono-numbers">
-                          {item.timestamp}
+                          {formatTimestamp(item.timestamp)}
                         </span>
                       </div>
 
@@ -153,7 +159,7 @@ export const Notifications: React.FC = () => {
                         {item.title}
                       </h4>
 
-                      <p className="mt-1 text-xs text-slate-600 max-w-2xl leading-relaxed">
+                      <p className="mt-1.5 text-[13px] text-slate-600 max-w-2xl leading-relaxed">
                         {item.message}
                       </p>
                     </div>

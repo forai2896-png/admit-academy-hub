@@ -1714,7 +1714,7 @@ nav a { transition: background .25s, color .25s, border-color .25s; }
 }
 /* Cards become home-page glass panels */
 .solvik .academic-module main :is(.rounded-2xl, .rounded-3xl):is(.bg-white, .border) {
-  border-radius: 26px;
+  border-radius: 16px;
   border-color: var(--glass-border);
   box-shadow: var(--shadow-card);
 }
@@ -1723,7 +1723,7 @@ nav a { transition: background .25s, color .25s, border-color .25s; }
   backdrop-filter: blur(22px) saturate(140%);
   -webkit-backdrop-filter: blur(22px) saturate(140%);
 }
-.solvik .academic-module main .rounded-xl:is(.bg-white, .border) { border-radius: 18px; }
+.solvik .academic-module main .rounded-xl:is(.bg-white, .border) { border-radius: 12px; }
 .solvik .academic-module main :is(.rounded-xl, .rounded-lg).bg-white { background-color: var(--glass-strong); }
 /* Home uses plain glass tiles: no coloured edge stripes */
 .solvik .academic-module .dashboard-metrics > .dashboard-stat-card::before { display: none; }
@@ -1760,7 +1760,7 @@ nav a { transition: background .25s, color .25s, border-color .25s; }
 .solvik .academic-module .text-xs { font-size: 12.5px; }
 /* Academic welcome card = home page lime feature card */
 .solvik .academic-module .dashboard-welcome {
-  border-radius: 26px;
+  border-radius: 16px;
   border: 1px solid color-mix(in oklab, var(--lime) 45%, transparent);
   background: linear-gradient(160deg, color-mix(in oklab, var(--lime) 22%, transparent), oklch(1 0 0 / 5%) 70%);
   backdrop-filter: blur(22px) saturate(140%);
@@ -1779,5 +1779,5 @@ nav a { transition: background .25s, color .25s, border-color .25s; }
 .solvik .academic-module [role="dialog"] {
   background-color: var(--popover);
   border-color: var(--glass-border);
-  border-radius: 26px;
+  border-radius: 18px;
 }

@@ -167,7 +167,7 @@ export const MyClassSchedule: React.FC = () => {
   };
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-5">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -297,10 +297,10 @@ export const MyClassSchedule: React.FC = () => {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
+              <table className="w-full min-w-[1080px] text-left text-xs border-collapse">
                 <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50/80 text-slate-500 uppercase tracking-wider font-semibold">
-                    <th className="py-3 px-4">Subject / Module</th>
+                  <tr className="border-b border-slate-200 bg-slate-50/80 text-slate-500 uppercase tracking-wider font-semibold whitespace-nowrap">
+                    <th className="min-w-[200px] py-3 px-4">Subject / Module</th>
                     <th className="py-3 px-3">Students</th>
                     <th className="py-3 px-3">Batch Dates</th>
                     <th className="py-3 px-3">Batch</th>
@@ -351,7 +351,7 @@ export const MyClassSchedule: React.FC = () => {
                     return (
                       <tr key={item.id} className="hover:bg-slate-50/70 transition-colors">
                         {/* 1. Subject / Module */}
-                        <td className="py-3 px-4">
+                        <td className="min-w-[200px] py-3 px-4">
                           <div className="font-bold text-slate-900">{item.moduleName}</div>
                           <div className="text-[11px] text-slate-400 mt-0.5">{item.roomOrLink}</div>
                         </td>
