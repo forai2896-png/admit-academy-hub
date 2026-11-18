@@ -1,12 +1,8 @@
 import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
-import { Download, Plus } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
-import { PageHeader } from "@/components/ui/page";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AgentSideNav } from "@/components/sales/agent-sidenav";
 import { AdmissionsProvider } from "@/components/sales/admissions/context";
-import { RoleSwitcher } from "@/components/sales/admissions/workspace";
 
 export const Route = createFileRoute("/admission")({
   head: () => ({
@@ -52,24 +48,7 @@ function AdmissionLayout() {
     <AppShell title="Admission">
       <AdmissionsProvider>
         <div className="space-y-6">
-          <PageHeader
-            title="Admission"
-            subtitle="Pipeline, agents, leads and live performance"
-            actions={
-              <>
-                <RoleSwitcher />
-                <Button variant="outline" size="sm" className="gap-1.5">
-                  <Download className="size-4" /> Export
-                </Button>
-                <Link to="/admission/application">
-                  <Button size="sm" className="gap-1.5">
-                    <Plus className="size-4" /> New application
-                  </Button>
-                </Link>
-              </>
-            }
-          />
-          <div className="-mt-2 overflow-x-auto border-b border-border">
+          <div className="overflow-x-auto border-b border-border">
             <nav className="-mb-px flex min-w-max gap-1">
               {TABS.map((t) => {
                 const active = t.exact ? pathname === t.to || pathname === t.to + "/" : pathname.startsWith(t.to);
