@@ -29,8 +29,11 @@ function isActive(path: string, url: string) {
 
 export function BrandMark() {
   return (
-    <span className="grid size-10 place-items-center rounded-xl bg-lime text-lime-foreground shadow-glow">
-      <GraduationCap className="size-5" strokeWidth={2.4} />
+    <span className="grid size-10 place-items-center rounded-xl bg-gradient-to-br from-red-600 via-red-500 to-blue-600 shadow-glow">
+      <svg viewBox="0 0 24 24" className="size-5" fill="none" aria-hidden="true">
+        <path d="M4 19V5l4 7 4-7v14" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M12 5l4 7 4-7v14" stroke="#dbeafe" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
     </span>
   );
 }
