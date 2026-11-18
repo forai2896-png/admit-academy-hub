@@ -114,15 +114,7 @@ export function AppShell({
         </header>
 
         <main key={title} className={`${frame} page-in flex-1 pb-14 pt-8`}>
-          {header ?? (
-            <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
-              <h1 className="solvik-title">{title}</h1>
-              <div className="flex gap-2">
-                <button type="button" className="ghost-btn">Export</button>
-                <button type="button" className="lime-btn"><Plus className="size-4" />Create new</button>
-              </div>
-            </div>
-          )}
+          {header ?? <h1 className="sr-only">{title}</h1>}
           {surface === "paper" ? <div className="solvik-paper min-w-0">{children}</div> : children}
         </main>
       </div>
