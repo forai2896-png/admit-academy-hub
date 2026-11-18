@@ -1375,6 +1375,134 @@ nav a { transition: background .25s, color .25s, border-color .25s; }
     box-shadow: inset 0 1px 0 oklch(1 0 0 / 12%);
   }
 
+  /* macOS Dock style main menu (src/components/DockNav.tsx) */
+  .dock-nav {
+    --dock-blue: oklch(0.62 0.17 250);
+    --dock-green: oklch(0.66 0.16 150);
+    --dock-amber: oklch(0.76 0.15 75);
+    --dock-red: oklch(0.6 0.2 25);
+    --dock-violet: oklch(0.58 0.18 295);
+    --dock-teal: oklch(0.65 0.11 195);
+    --dock-slate: oklch(0.55 0.03 250);
+    --dock-orange: oklch(0.68 0.17 50);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    height: 60px;
+    padding: 8px 14px 0;
+    border-radius: 22px;
+    background: oklch(1 0 0 / 7%);
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 10%), 0 10px 30px -12px oklch(0 0 0 / 55%);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  }
+  .dock-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    outline: none;
+  }
+  .dock-tile {
+    --tone: var(--dock-slate);
+    display: grid;
+    place-items: center;
+    width: var(--dock-size, 40px);
+    height: var(--dock-size, 40px);
+    border-radius: calc(var(--dock-size, 40px) * 0.28);
+    color: oklch(1 0 0);
+    background:
+      linear-gradient(180deg, oklch(1 0 0 / 28%), oklch(1 0 0 / 0%) 55%),
+      var(--tone);
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 35%), 0 6px 14px -6px oklch(0 0 0 / 60%);
+    transition: width .16s ease-out, height .16s ease-out, border-radius .16s ease-out, filter .2s ease;
+    will-change: width, height;
+  }
+  .dock-tile svg {
+    width: calc(var(--dock-size, 40px) * 0.5);
+    height: calc(var(--dock-size, 40px) * 0.5);
+    stroke-width: 2;
+    transition: width .16s ease-out, height .16s ease-out;
+  }
+  .dock-item[data-tone="blue"] .dock-tile { --tone: var(--dock-blue); }
+  .dock-item[data-tone="green"] .dock-tile { --tone: var(--dock-green); }
+  .dock-item[data-tone="amber"] .dock-tile { --tone: var(--dock-amber); }
+  .dock-item[data-tone="red"] .dock-tile { --tone: var(--dock-red); }
+  .dock-item[data-tone="violet"] .dock-tile { --tone: var(--dock-violet); }
+  .dock-item[data-tone="teal"] .dock-tile { --tone: var(--dock-teal); }
+  .dock-item[data-tone="slate"] .dock-tile { --tone: var(--dock-slate); }
+  .dock-item[data-tone="orange"] .dock-tile { --tone: var(--dock-orange); }
+  .dock-item:active .dock-tile { filter: brightness(.82); }
+  .dock-item:focus-visible .dock-tile { box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--primary); }
+
+  .dock-label {
+    position: absolute;
+    top: calc(var(--dock-size, 40px) + 16px);
+    left: 50%;
+    z-index: 40;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--foreground);
+    background: oklch(0.22 0.01 250 / 92%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 20px -8px oklch(0 0 0 / 60%);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -4px);
+    transition: opacity .15s ease, transform .15s ease, top .16s ease-out;
+  }
+  .dock-item:hover .dock-label,
+  .dock-item:focus-visible .dock-label { opacity: 1; transform: translate(-50%, 0); }
+
+  .dock-dot {
+    position: absolute;
+    top: calc(var(--dock-size, 40px) + 5px);
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--foreground);
+    opacity: 0;
+    transition: opacity .2s ease, top .16s ease-out;
+  }
+  .dock-item[data-active="true"] .dock-dot { opacity: .9; }
+
+  .dock-item[data-bounce] .dock-tile { animation: dock-bounce .6s cubic-bezier(.3,.7,.4,1); }
+  @keyframes dock-bounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(10px); }
+    55% { transform: translateY(-2px); }
+    75% { transform: translateY(4px); }
+  }
+
+  /* Small screens: no magnification, scrollable row with labels under the icons. */
+  .dock-nav[data-static] {
+    height: auto;
+    gap: 6px;
+    padding: 8px 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .dock-nav[data-static]::-webkit-scrollbar { display: none; }
+  .dock-nav[data-static] .dock-item { min-width: 64px; gap: 4px; }
+  .dock-nav[data-static] .dock-label {
+    position: static;
+    opacity: .85;
+    transform: none;
+    padding: 0;
+    font-size: 11px;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+  .dock-nav[data-static] .dock-item[data-active="true"] .dock-label { opacity: 1; color: var(--primary); }
+  .dock-nav[data-static] .dock-dot { display: none; }
+
   .segmented {
     display: inline-flex;
     padding: 4px;

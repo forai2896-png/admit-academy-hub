@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { Area, AreaChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import backdrop from "@/assets/backdrop.jpg";
+import { DockNav } from "@/components/DockNav";
 
 export const menu = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
@@ -66,20 +67,7 @@ export function AppShell({
 }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
 
-  const links = navItems.map((m) => {
-    const active = isActive(path, m.url);
-    return (
-      <Link
-        key={m.url}
-        to={m.url}
-        data-active={active}
-        aria-current={active ? "page" : undefined}
-        className="pill-link"
-      >
-        {m.title}
-      </Link>
-    );
-  });
+  const active = (url: string) => isActive(path, url);
 
   return (
     <div className="solvik relative min-h-screen w-full font-sans">
@@ -109,9 +97,7 @@ export function AppShell({
               <BrandMark />
               <span className="text-xl font-bold tracking-tight">Manager Edu</span>
             </Link>
-            <nav aria-label="Main navigation" className="pill-nav mx-auto hidden min-w-0 lg:flex">
-              {links}
-            </nav>
+            <DockNav items={navItems} isActive={active} className="mx-auto hidden lg:flex" />
             <div className="ml-auto flex shrink-0 items-center gap-2 lg:ml-0">
               <button type="button" className="glass-icon" aria-label="Help"><HelpCircle className="size-[18px]" /></button>
               <button type="button" className="glass-icon relative" aria-label="Notifications">
@@ -124,9 +110,7 @@ export function AppShell({
               </span>
             </div>
           </div>
-          <nav aria-label="Main navigation" className="pill-nav mt-4 lg:hidden">
-            {links}
-          </nav>
+          <DockNav items={navItems} isActive={active} magnify={false} className="mt-4 lg:hidden" />
         </header>
 
         <main key={title} className={`${frame} page-in flex-1 pb-14 pt-8`}>
