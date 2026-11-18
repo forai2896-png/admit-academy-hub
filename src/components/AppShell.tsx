@@ -10,7 +10,6 @@ import backdrop from "@/assets/backdrop.jpg";
 
 export const menu = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Marketing", url: "/marketing", icon: Megaphone },
   { title: "Admission", url: "/admission", icon: UserPlus },
   { title: "Finance", url: "/finance", icon: Wallet },
   { title: "Admin", url: "/admin", icon: ShieldCheck },

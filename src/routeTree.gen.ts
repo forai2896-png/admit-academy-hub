@@ -16,7 +16,6 @@ import { Route as AdmissionRouteImport } from './routes/admission'
 import { Route as DirectorsRouteImport } from './routes/directors'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as HrRouteImport } from './routes/hr'
-import { Route as MarketingRouteImport } from './routes/marketing'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as WorkspaceRouteImport } from './routes/workspace'
 import { Route as AcademicIndexRouteImport } from './routes/academic.index'
@@ -121,11 +120,6 @@ const FinanceRoute = FinanceRouteImport.update({
 const HrRoute = HrRouteImport.update({
   id: '/hr',
   path: '/hr',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MarketingRoute = MarketingRouteImport.update({
-  id: '/marketing',
-  path: '/marketing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -494,7 +488,6 @@ export interface FileRoutesByFullPath {
   '/directors': typeof DirectorsRouteWithChildren
   '/finance': typeof FinanceRouteWithChildren
   '/hr': typeof HrRoute
-  '/marketing': typeof MarketingRoute
   '/settings': typeof SettingsRoute
   '/workspace': typeof WorkspaceRoute
   '/academic/attendance': typeof AcademicAttendanceRoute
@@ -569,7 +562,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/hr': typeof HrRoute
-  '/marketing': typeof MarketingRoute
   '/settings': typeof SettingsRoute
   '/workspace': typeof WorkspaceRoute
   '/academic/attendance': typeof AcademicAttendanceRoute
@@ -647,7 +639,6 @@ export interface FileRoutesById {
   '/directors': typeof DirectorsRouteWithChildren
   '/finance': typeof FinanceRouteWithChildren
   '/hr': typeof HrRoute
-  '/marketing': typeof MarketingRoute
   '/settings': typeof SettingsRoute
   '/workspace': typeof WorkspaceRoute
   '/academic/attendance': typeof AcademicAttendanceRoute
@@ -729,7 +720,6 @@ export interface FileRouteTypes {
     | '/directors'
     | '/finance'
     | '/hr'
-    | '/marketing'
     | '/settings'
     | '/workspace'
     | '/academic/attendance'
@@ -804,7 +794,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/hr'
-    | '/marketing'
     | '/settings'
     | '/workspace'
     | '/academic/attendance'
@@ -881,7 +870,6 @@ export interface FileRouteTypes {
     | '/directors'
     | '/finance'
     | '/hr'
-    | '/marketing'
     | '/settings'
     | '/workspace'
     | '/academic/attendance'
@@ -962,7 +950,6 @@ export interface RootRouteChildren {
   DirectorsRoute: typeof DirectorsRouteWithChildren
   FinanceRoute: typeof FinanceRouteWithChildren
   HrRoute: typeof HrRoute
-  MarketingRoute: typeof MarketingRoute
   SettingsRoute: typeof SettingsRoute
   WorkspaceRoute: typeof WorkspaceRoute
   AgentIdRoute: typeof AgentIdRoute
@@ -1017,13 +1004,6 @@ declare module '@tanstack/react-router' {
       path: '/hr'
       fullPath: '/hr'
       preLoaderRoute: typeof HrRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/marketing': {
-      id: '/marketing'
-      path: '/marketing'
-      fullPath: '/marketing'
-      preLoaderRoute: typeof MarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -1748,7 +1728,6 @@ const rootRouteChildren: RootRouteChildren = {
   DirectorsRoute: DirectorsRouteWithChildren,
   FinanceRoute: FinanceRouteWithChildren,
   HrRoute: HrRoute,
-  MarketingRoute: MarketingRoute,
   SettingsRoute: SettingsRoute,
   WorkspaceRoute: WorkspaceRoute,
   AgentIdRoute: AgentIdRoute,
